@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+/* Brand colors */
+:root {
+    --primary-color: #6600cc;
+    --dark-primary-color: #3e007c;
+    --light-primary-color: #8f55c9;
+    --text-icon-color: white;
+    --accent-color: #9966ff;
+    --primary-text-color: black;
+    --secondary-text-color: #1f013d;
+    --divider-color: grey;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--primary-color);
+    text-decoration: none;
+    list-style: none;
+}
+
+/* Base Style */
+body{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+    "header"
+    "body"
+    "footer";
+}
+main {
+    padding: 1em;
+}
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-icon-color);
+    grid-area: footer;
+}
