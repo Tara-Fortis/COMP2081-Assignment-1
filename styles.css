@@ -1,4 +1,8 @@
 @charset "UTF-8";
+@font-face {
+    font-family: Jolley;
+    src: url('Jolley/Jolley.woff');
+}
 
 /* Brand colors */
 :root {
@@ -19,9 +23,15 @@ nav {
     text-decoration: none;
     list-style: none;
     display: flex;
-    flex-direction: row;
-    padding: 1rem 0;
-    align-items: baseline;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    font-family: Chorus;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 nav>img {
@@ -32,35 +42,90 @@ nav>img {
 
 nav>ul {
     display: flex;
-    justify-content: flex-end;
+    gap: 1em;
     list-style: none;
 }
 
-nav>ul>li {
-    margin: 0 2rem;
+/* Link styles */
+li>a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+    padding: 0.5rem;
+    cursor: pointer;
 }
 
+li>a:hover {
+    color: var(--primary-color);
+    text-shadow: 2px 2px 2px var(--accent-color);
+}
+
+li>a:active {
+    color: var(--primary-color);
+}
+
+
 /* Base Style */
+html,
 body {
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #dbc0f739;
     display: grid;
+    min-height: 100vh;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "header"
-        "body"
+        "main"
         "footer";
 }
 
+header {
+    grid-area: header;
+}
+
 main {
+    grid-area: main;
     padding: 1em;
 }
 
-/* Footer */
 footer {
     background-color: var(--light-primary-color);
     color: var(--primary-text-color);
     grid-area: footer;
-    position: absolute;
-    width: 100vw;
-    bottom: 0;
     text-align: center;
 }
+
+/* Section Style */
+section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    max-width: 80vw;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    background-color: rgba(240, 248, 255, 0.204);
+    margin: 1rem;
+}
+
+/* Aside Style */
+aside {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    max-width: 80vw;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: inset 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin: 1rem;
+}
+
+/* Font from: https://fontesk.com/chorus-font/ */
