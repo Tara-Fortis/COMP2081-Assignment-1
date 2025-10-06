@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 @font-face {
     font-family: Jolley;
     src: url('Jolley/Jolley.woff');
@@ -7,90 +8,137 @@
 /* Brand colors */
 :root {
     --primary-color: #6600cc;
-    --dark-primary-color: #3e007c;
-    --light-primary-color: #dbc0f7;
-    --text-icon-color: white;
+    --primary-light: #dbc0f7;
+    --primary-dark: #3e007c;
     --accent-color: #9966ff;
-    --primary-text-color: black;
-    --secondary-text-color: #1f013d;
-    --divider-color: grey;
+    --background: #f8f9fa;
+    --surface: #fff;
+    --text-primary: #212529;
+    --text-secondary: #5a189a;
+    --border-radius: 1.25rem;
+    --box-shadow: 0 4px 24px rgba(80, 0, 170, 0.06);
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*,
+*:before,
+*after {
+    box-sizing: inherit;
 }
 
 /* Navigation */
+header {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 1.25rem 1rem 1rem 1rem;
+    text-align: center;
+}
+
 nav {
-    background-color: var(--light-primary-color);
-    color: var(--primary-text-color);
+    grid-area: nav;
     text-decoration: none;
-    list-style: none;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
+    background: transparent;
+    margin: 0.5rem 0;
 }
 
 h1 {
-    font-family: Chorus;
-    font-size: 2.5rem;
+    font-family: Jolley;
+    color: var(--dark-primary-color);
+    font-size: 2rem;
+    margin: 0;
     font-weight: bold;
+    letter-spacing: 0.04em;
 }
 
-nav>img {
-    padding: 0.5rem;
-    height: 3rem;
-    width: auto;
-}
-
-nav>ul {
+nav ul {
     display: flex;
-    gap: 1em;
+    gap: 0.5em;
+    padding: 0;
+    margin: 0;
     list-style: none;
 }
 
-/* Link styles */
-li>a {
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    padding: 0.5em 1.1em;
+    border-radius: var(--border-radius);
+    color: #ffffff;
     text-decoration: none;
-    color: var(--primary-text-color);
-    padding: 0.5rem;
-    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
-li>a:hover {
+nav a:hover nav a:focus {
+    background: #ffffff;
     color: var(--primary-color);
-    text-shadow: 2px 2px 2px var(--accent-color);
+    box-shadow: 0 0 0 3px var(--primary-light);
 }
 
-li>a:active {
-    color: var(--primary-color);
+nav a:focus {
+    color: #ffffff;
+    background: var(--primary-dark);
 }
 
-
-/* Base Style */
-html,
+/* Layout */
 body {
-    height: 100%;
-    min-height: 100vh;
     margin: 0;
     padding: 0;
-}
-
-body {
-    background-color: #dbc0f739;
-    display: grid;
+    background: var(--background);
+    color: var(--text-primary);
+    font-family: 'Jolley', 'Segoe UI', sans-serif;
     min-height: 100vh;
+    display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
-        "header"
+        "nav"
         "main"
         "footer";
-}
-
-header {
-    grid-area: header;
 }
 
 main {
     grid-area: main;
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+section,
+aside {
+    padding: 1.2rem 1rem;
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    background: var(--surface);
+    margin-bottom: 1.25rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section {
+    margin-top: 1.2rem;
+    grid-area: section1;
+}
+
+aside {
+    background: var(--primary-light);
+    color: var(--text-secondary);
+    border-left: 4px solid var(--primary-color);
+    grid-area: aside;
+}
+
+aside+section {
+    grid-area: section2;
 }
 
 footer {
@@ -100,32 +148,16 @@ footer {
     text-align: center;
 }
 
-/* Section Style */
-section {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    max-width: 80vw;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-    background-color: rgba(240, 248, 255, 0.204);
-    margin: 1rem;
+/* Larger Screens */
+@media screen and (min-width: 600px) {
+    main {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+        "section1 aside"
+        "section2 aside";
+        gap: 2rem;
+    }
 }
-
-/* Aside Style */
-aside {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    max-width: 80vw;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-shadow: inset 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    margin: 1rem;
-}
-
-/* Font from: https://fontesk.com/chorus-font/ */
+/* Font from: https://fontesk.com/jolly-font/ */
