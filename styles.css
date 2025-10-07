@@ -149,6 +149,11 @@ nav a:focus {
 .search-form button svg {
     margin: 0;
 }
+#search-message {
+    margin: 1em;
+    color: var(--primary-light);
+}
+
 /* Layout */
 body {
     margin: 0;
