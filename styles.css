@@ -70,6 +70,8 @@ nav ul {
     padding: 0;
     margin: 0;
     list-style: none;
+    align-items: center;
+    justify-content: center;
 }
 
 nav li {
@@ -90,7 +92,7 @@ nav a {
 
 nav a:hover nav a:focus {
     background: #ffffff;
-    color: var(--primary-color);
+    color: var(--accent-color);
     box-shadow: 0 0 0 3px var(--primary-light);
 }
 
@@ -99,6 +101,54 @@ nav a:focus {
     background: var(--primary-dark);
 }
 
+.search {
+    border-radius: var(--border-radius);
+    border: none;
+}
+
+/* Search form */
+::placeholder {
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search-form .search {
+    display: block;
+    width: 200px;
+    padding: 0.4rem 0.7rem;
+    font-size: 1rem;
+}
+
+.search-form .search:focus {
+    border-color: var(--accent-color);
+    transition: background 0.15s, color 0.15s, border 0.15s;
+}
+
+.search-form button {
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0.7rem;
+    background: transparent;
+    border: none;
+    color: var(--primary-light);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border 0.15s;
+}
+
+.search-form button:hover, .search-form button:focus {
+    color: var(--accent-color);
+}
+
+.search-form button svg {
+    margin: 0;
+}
 /* Layout */
 body {
     margin: 0;
